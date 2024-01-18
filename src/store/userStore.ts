@@ -1,13 +1,6 @@
 import { create } from "zustand";
 import { User } from "../libs/types";
 
-const initialUserData: User | null = {
-  email: "",
-  username: "",
-  accessToken: null,
-  refreshToken: null,
-};
-
 interface UserStoreState {
   user: User | null;
   signup: (data: User) => void;

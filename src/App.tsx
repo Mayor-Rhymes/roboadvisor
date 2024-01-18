@@ -3,7 +3,6 @@ import { router } from "./router";
 import {
   QueryClientProvider,
   QueryClient,
-  useQuery,
 } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
