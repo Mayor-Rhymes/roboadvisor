@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        "hero-image": "url('/src/assets/hero-Image.jpg')",
+        "hero-image": "url('./src/assets/hero-Image.jpg')",
         "cool-touch": "radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%)"
       }
     },
