@@ -21,7 +21,23 @@ export const login = async ({ email, password }: UserLog): Promise<User> => {
     console.log("There was an issue with your credential");
   }
 
-  const data = (await response.json());
+  const data = await response.json();
   //   signup(data);
   return data.user as User;
+};
+
+export const fetchPortfolios = async (): Promise<any> => {
+  const response = await fetch("http://localhost:4000/api/portfolio", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    console.log("There was an issue with your credential");
+  }
+
+  const data = await response.json();
+
+  return data.portfolios;
 };
