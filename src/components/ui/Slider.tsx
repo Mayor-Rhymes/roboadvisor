@@ -1,5 +1,5 @@
 import * as Slider from "@radix-ui/react-slider";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction} from "react";
 
 
 
