@@ -7,8 +7,7 @@ import { useMutation } from "@tanstack/react-query";
 import Button from "../components/ui/Button";
 import { login } from "../libs/apis";
 import { userStore } from "../store/userStore";
-
-
+import { toast } from "sonner";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,28 +16,23 @@ export default function Login() {
   const loginMutation = useMutation({
     mutationFn: login,
     onSuccess: async (data) => {
-        signup(data);
-        console.log(data);
-        navigate("/");
-        
+      signup(data);
+      toast.success("Login was successful");
+      navigate("/", {replace: true});
     },
-    onError: async () => {
-
-        console.log("Yolo")
-    }
+    onError: (err) => {
+      if(err){
+        toast.error("Login was unsuccessful. Try Again");
+        console.log("Yolo");
+      }
+      
+    },
   });
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
     if (email && password) {
       loginMutation.mutate({ email, password });
-    //   console.log(loginMutation.data);
-    //   if (loginMutation.isSuccess) {
-    //     console.log(loginMutation.data);
-    //     redirect("/");
-    //   } else {
-    //     console.log("Hello There");
-    //   }
     }
   };
 

@@ -15,7 +15,6 @@ export default function Navbar() {
 
   const navigate = useNavigate();
   const { user, logout } = userStore((state) => state);
-  console.log(user);
 
   const handleLogout = () => {
     logout();
@@ -44,10 +43,16 @@ export default function Navbar() {
             Bonds
           </LinkItem>
 
-          <LinkItem href="/products" className="hover:bg-black hover:text-white">
+          <LinkItem
+            href="/products"
+            className="hover:bg-black hover:text-white"
+          >
             Products
           </LinkItem>
-          <LinkItem href="/risktolerance" className="hover:bg-black hover:text-white">
+          <LinkItem
+            href="/risktolerance"
+            className="hover:bg-black hover:text-white"
+          >
             Check Risk Tolerance
           </LinkItem>
         </ul>
@@ -126,13 +131,17 @@ export default function Navbar() {
             >
               Check Risk Tolerance
             </LinkItem>
-            {user && (
+            {user ? (
               <Button
                 onClick={handleLogout}
                 className="rounded-none bg-black hover:bg-black text-white "
               >
                 Logout
               </Button>
+            ) : (
+              <LinkItem href="/login" className="bg-black text-white ">
+                Login/Signup
+              </LinkItem>
             )}
           </motion.ul>
         )}

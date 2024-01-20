@@ -5,6 +5,7 @@ import { FormEvent, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { signup2 } from "../libs/apis";
 import { userStore } from "../store/userStore";
+import { toast } from "sonner";
 export default function Signup() {
 
   const signup = userStore((state: any) => state.signup);
@@ -17,7 +18,7 @@ export default function Signup() {
     mutationFn: signup2,
     onSuccess: async (data) => {
       signup(data);
-      console.log(data);
+      toast.success("Login was successful");
       navigate("/");
     },
     onError: async () => {
