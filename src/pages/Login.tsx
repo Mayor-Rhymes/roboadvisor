@@ -18,6 +18,7 @@ export default function Login() {
     onSuccess: async (data) => {
       signup(data);
       toast.success("Login was successful");
+      localStorage.setItem("user", JSON.stringify(data));
       navigate("/", {replace: true});
     },
     onError: (err) => {

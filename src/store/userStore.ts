@@ -7,8 +7,14 @@ interface UserStoreState {
   logout: () => void;
 }
 
+let userDetail: User;
+const currentUser = localStorage.getItem("user");
+if(currentUser != null){
+    userDetail = JSON.parse(currentUser) as User;
+}
+
 export const userStore = create<UserStoreState>()((set) => ({
-  user: null,
+  user: userDetail,
   signup: (data: User) =>
     set((state) => {
       return {
