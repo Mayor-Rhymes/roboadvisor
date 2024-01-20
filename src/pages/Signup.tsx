@@ -1,52 +1,41 @@
 import Button from "../components/ui/Button";
 import PasswordInput from "../components/ui/PasswordInput";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { FormEvent, useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { signup2 } from "../libs/apis";
+import { userStore } from "../store/userStore";
 export default function Signup() {
+
+  const signup = userStore((state: any) => state.signup);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   const [confirmPassword, setConfirmPassword] = useState("");
+  const signupMutation = useMutation({
+    mutationFn: signup2,
+    onSuccess: async (data) => {
+      signup(data);
+      console.log(data);
+      navigate("/");
+    },
+    onError: async () => {
+      console.log("Yolo");
+    },
+  });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignup = async (e: FormEvent) => {
     e.preventDefault();
-    if (
-      email &&
-      username &&
-      password &&
-      confirmPassword &&
-      password == confirmPassword
-    ) {
-      try {
-        const response = await fetch("/api/user", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-
-          body: JSON.stringify({
-            email,
-            username,
-            password,
-          }),
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data);
-        } else {
-          console.log("There is an error");
-        }
-      } catch (err) {
-        console.log(err);
-      }
+    if (email && password && username && confirmPassword == password) {
+      signupMutation.mutate({ email, username, password });
     }
   };
 
   return (
     <form
       className="flex flex-col gap-10 lg:w-[50%] mx-auto p-10 mt-10 lg:shadow-lg"
-      onSubmit={handleSubmit}
+      onSubmit={handleSignup}
     >
       <p className="text-lg font-semibold text-center">
         Get Started With WealthHelp

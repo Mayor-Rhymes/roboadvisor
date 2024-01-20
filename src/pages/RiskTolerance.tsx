@@ -1,22 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SliderComp from "../components/ui/Slider";
 import "rc-slider/assets/index.css";
-import { stockData, stockDataType } from "../libs/fakeData";
+import { stockDataType } from "../libs/fakeData";
+import { getPortfolio } from "../libs/apis";
+
 
 
 export default function RiskTolerance() {
   const [slideValue, setSlideValue] = useState<number[]>([0]);
   const [currentStock, setCurrentStock] = useState<stockDataType | null>(
-    stockData[0]
+    null
   );
-  const handleSlideSelection = (value: number) => {
-    const stock = stockData.find((stock) => stock["Tolerance"] === value);
-    if (stock) {
-      setCurrentStock(stock);
-    }
+  const handleSlideSelection = async (value: number) => {
+    const stock = await getPortfolio(value.toString());
+    setCurrentStock(stock);
   };
 
   console.log(currentStock);
+  useEffect(() => {
+     if(!currentStock){
+       handleSlideSelection(0);
+     }
+  }, [currentStock])
   return (
     <div className="flex pl-10 py-10 flex-col mt-10 gap-10 min-h-screen">
       <p className="text-xl font-bold">Please check your risk tolerance</p>
@@ -34,7 +39,8 @@ export default function RiskTolerance() {
           Object.keys(currentStock).map((stock: string) => {
             if (
               stock !== "Tolerance" &&
-              currentStock[stock as keyof stockDataType] !== 0
+              currentStock[stock as keyof stockDataType] !== 0 && 
+              stock != "id"
             ) {
               return (
                 <div className="flex gap-10 items-center">
@@ -49,7 +55,7 @@ export default function RiskTolerance() {
                   </p>
                 </div>
               );
-            } else if (currentStock[stock as keyof stockDataType] === 0 && stock !== "Tolerance") {
+            } else if (currentStock[stock as keyof stockDataType] === 0 && stock !== "Tolerance" && stock != "id") {
               return (
                 <p key={stock}>
                   {stock}: {currentStock[stock as keyof stockDataType]}%
