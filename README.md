@@ -1,6 +1,6 @@
 
 ### RoboAdvisor Named WealthHelp
-Link: (Link to project)[https://roboadvisor-gilt.vercel.app/]
+Link: [Link to project](https://roboadvisor-gilt.vercel.app/)
 
 ##### Built With
 - [Vite](https://vitejs.dev)
