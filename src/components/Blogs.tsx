@@ -16,7 +16,6 @@ export default function Blogs() {
     >
       <h3
         className="text-center text-4xl font-bold"
-        style={{ textShadow: "5px 10px lightgrey" }}
       >
         Do you like Blogs? We have Financial Blogs Authored By Highly Qualified
         People

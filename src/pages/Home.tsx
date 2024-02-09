@@ -25,7 +25,6 @@ export default function Home() {
       >
         <h3
           className="text-center text-4xl font-bold"
-          style={{ textShadow: "5px 10px lightgrey" }}
         >
           Create An Account On Our Dime
         </h3>
@@ -37,7 +36,7 @@ export default function Home() {
               Get Started with the simplest and cheapest plan available.
               Register for free, observe your portfolio for free.
             </p>
-            <ul className="px-4 flex flex-col gap-4">
+            <ul className="flex flex-col gap-4">
               <li>Basic Analytics Tools</li>
               <li>Timezone Tracking</li>
               <li>Basic Maintenance</li>
@@ -51,7 +50,7 @@ export default function Home() {
             <p>
               Our most popular plan. Gain access to the most important things.
             </p>
-            <ul className="px-4 flex flex-col gap-4">
+            <ul className="flex flex-col gap-4">
               <li>Basic Analytics Tools</li>
               <li>Advanced Analytics Tools</li>
               <li>Timezone Tracking</li>
@@ -71,7 +70,7 @@ export default function Home() {
               rule the world and be a part of the elites or are already a part
               of the elites
             </p>
-            <ul className="px-4 flex flex-col gap-4">
+            <ul className="flex flex-col gap-4">
               <li>Basic Analytics Tools</li>
               <li>Advanced Analytics Tools</li>
               <li>Timezone Tracking</li>
@@ -89,7 +88,6 @@ export default function Home() {
       <div className="py-10 flex justify-evenly flex-col lg:flex-row px-10">
         <h3
           className="text-4xl font-bold grow"
-          style={{ textShadow: "5px 10px lightgrey" }}
         >
           Frequently Asked Questions
         </h3>

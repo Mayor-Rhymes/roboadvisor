@@ -4,7 +4,7 @@ import Card from "./ui/Card";
 
 export default function Offers() {
   return (
-    <motion.div initial={{scale: 0, translateX: -100}} whileInView={{scale: 1, translateX: 1}} className="py-5 px-4 flex flex-col gap-10">
+    <motion.div transition={{duration: .5, ease: "easeIn"}} initial={{scale: 0, translateX: -100}} whileInView={{scale: 1, translateX: 1}} className="py-5 px-4 flex flex-col gap-10">
       <h4 className="text-3xl font-bold">Our Offers</h4>
 
       <div className="flex flex-col lg:flex-row gap-10">
