@@ -7,9 +7,9 @@ import { Dispatch, SetStateAction} from "react";
 interface SliderProps {
     slideValue: number[],
     setSlideValue: Dispatch<SetStateAction<number[]>>,
-    handleSlideSelection: (value: number) => void;
+    
 }
-const SliderComp = ({slideValue, setSlideValue, handleSlideSelection}: SliderProps) => {
+const SliderComp = ({slideValue, setSlideValue}: SliderProps) => {
   
   
   return (
@@ -20,7 +20,6 @@ const SliderComp = ({slideValue, setSlideValue, handleSlideSelection}: SliderPro
         onValueChange={(number: number[]) => {
           setSlideValue(number);
           console.log(slideValue);
-          handleSlideSelection(slideValue[0]);
         }}
         max={10}
         min={0}
